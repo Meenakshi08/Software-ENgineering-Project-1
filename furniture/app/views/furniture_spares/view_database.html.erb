@@ -1,0 +1,50 @@
+<h1><strong>VIEWING THE FURNITURE SPARES DATABASE</strong></h1>
+<b style="color: RED;margin-left:1100px"></b>
+<%= link_to 'HOME', furniture_spares_path, :class => "btn btn-success" %>
+
+
+<br>
+<em>Listing all furniture spares available in the store</em>
+<br>
+
+<br>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Spare Part ID</th>
+     <th>Spare Part Name</th>
+     <th>Material</th>
+     <th>Color</th>
+     <th>Manufacturer</th>
+     <th>Quantity</th>
+     <th>Price Per Piece</th>
+     <th>Users rating</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+  <caption>Furniture Spares Table</caption>
+
+  <tbody>
+  <% @furniture_spares.each do |furniture_spare| %>
+      <tr>
+
+         <td><%= furniture_spare.SparePartID %></td>
+         <td><%= furniture_spare.SparePartName %></td>
+        <td><%= furniture_spare.Material %></td>
+        <td><%= furniture_spare.Color %></td>
+        <td><%= furniture_spare.Manufacturer %></td>
+        <td><%= furniture_spare.QuantityAvailable %></td>
+        <td><%= furniture_spare.Price %></td>
+        <td><%= furniture_spare.Description %></td>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= link_to 'NEW', new_furniture_spare_path, :class => "btn btn-warning" %>
+
+

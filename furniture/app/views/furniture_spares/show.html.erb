@@ -1,0 +1,53 @@
+<h1><strong>VIEWING <%= @furniture_spare.SparePartName %>'s DETAILS</strong></h1>
+<p id="notice"><%= notice %></p>
+<b style="color: RED;margin-left:1000px"></b>
+<%= link_to 'VIEW DATABASE', view_database_path, :class => "btn btn-primary" %>
+
+<%= link_to 'HOME', furniture_spares_path, :class => "btn btn-success" %>
+<p>
+  <strong>Spare Part ID:</strong>
+  <%= @furniture_spare.SparePartID %>
+</p>
+
+<p>
+  <strong>Spare Part Name:</strong>
+  <%= @furniture_spare.SparePartName %>
+</p>
+
+<p>
+  <strong>Material:</strong>
+  <%= @furniture_spare.Material %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @furniture_spare.Color %>
+</p>
+
+<p>
+  <strong>Manufacturer:</strong>
+  <%= @furniture_spare.Manufacturer %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @furniture_spare.QuantityAvailable %>
+</p>
+
+<p>
+  <strong>Price Per Piece:</strong>
+  <%= @furniture_spare.Price %>
+</p>
+
+<p>
+  <strong>Users rating:</strong>
+  <%= @furniture_spare.Description %>
+</p>
+<%# link_to 'VIEW DATABASE', view_database_path, :class => "btn btn-success" %>
+<%= link_to 'EDIT', edit_furniture_spare_path(@furniture_spare), :class => "btn btn-info" %>
+<%#<%= link_to 'HOME', furniture_spares_path %>
+
+<br>
+<br>
+<%= link_to 'NEW', new_furniture_spare_path, :class => "btn btn-warning" %>
+<%#<%= link_to 'NEW', new_furniture_spare_path %>

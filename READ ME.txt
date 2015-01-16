@@ -1,0 +1,22 @@
+The project demonstrates a database for a shops having furniture spares
+
+
+NEW and HOME are present on all pages
+
+HOME page has a list of all the products available (furniture spare part's name) 
+
+The names are made as radio buttons
+
+VIEW, EDIT and DELETE are disabled when no option is selected (no radio button is selected) on the HOME page
+
+A product cannot be created without providing the ID and name
+
+DELETE button confirms the deletion  before acting
+
+Additional feature: the whole database is displayed on clicking the VIEW DATABASE button
+
+VIEW DATABASE can be accessed from every page
+
+
+P.S. due to the usage of Bootstrap the web application has become slower.
+

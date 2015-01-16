@@ -1,0 +1,109 @@
+<h1>Editing <%= @furniture_spare.SparePartName %>'s details</h1>
+
+<b style="color: RED;margin-left:1000px"></b>
+<%= link_to 'VIEW DATABASE', view_database_path, :class => "btn btn-primary" %>
+
+<%= link_to 'HOME', furniture_spares_path, :class => "btn btn-success" %>
+
+<%# render 'form' %>
+<%= form_for(@furniture_spare) do |f| %>
+    <% if @furniture_spare.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@furniture_spare.errors.count, "error") %> prohibited this furniture_spare from being saved:</h2>
+
+          <ul>
+            <% @furniture_spare.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+    <p>
+      <strong>Spare Part ID:</strong>
+      <%= @furniture_spare.SparePartID %>
+    </p>
+
+    <p>
+      <strong>Spare Part Name:</strong>
+      <%= @furniture_spare.SparePartName %>
+    </p>
+
+    <p>
+      <strong>Material:</strong>
+      <%= @furniture_spare.Material %>
+    </p>
+
+
+
+
+    <div class="field">
+      <%= f.label :Color %><br>
+      <!--  <%= f.text_field :Color %>-->
+      <p>
+      <p>
+        <%= f.radio_button :Color, 'metallic' %>Metallic Finish
+      </p>
+      <p>
+        <%= f.radio_button :Color, 'black matte' %>Bold Black
+      </p>
+      <p>
+        <%= f.radio_button :Color, 'Wood Finish' %>Woodish Brown
+      </p>
+      </div>
+      <p>
+        <strong>Manufacturer:</strong>
+        <%= @furniture_spare.Manufacturer %>
+      </p>
+
+
+    <div class="field">
+      <%= f.label :Quantity %><br>
+      <%= f.number_field :QuantityAvailable %>
+    </div>
+      <p>
+        <strong>Price Per Piece:</strong>
+        <%= @furniture_spare.Price %>
+      </p>
+    <p>
+      <strong>Users rating:</strong>
+      <i>(Previous rating)select another if you want to change : </i>
+      <%= @furniture_spare.Description %>
+    </p>
+    <div class="field">
+      <%# f.label :Users_rating %><br>
+      <%# f.text_area :Description %>
+      <i style="margin-left:10px;">Enter rating on the scale of 0 - 100 (select one)</i>
+<br>
+      <!-- <input id="furniture_spares" name="furniture parts" type="checkbox" value="0 - 20" /> Needs attention-->
+      <td><%=check_box_tag :Description1, "Needs attention " %></td>
+      <%= label_tag(:Description, "0 - 19 (Needs attention)" ) %>
+      <br>
+      <td><%=check_box_tag :Description2, "Manageable " %></td>
+      <%= label_tag(:Description, "20 - 49 (Manageable)" ) %>
+      <br>
+      <td><%=check_box_tag :Description3, "Good Quality " %></td>
+      <%= label_tag(:Description, "50 - 69 (Good Quality)" ) %>
+      <br>
+      <td><%=check_box_tag :Description4, "Premium Quality " %></td>
+      <%= label_tag(:Description, "70 - 89 (Premium Quality)" ) %>
+      <br>
+      <td><%=check_box_tag :Description5, "Best in the Market " %></td>
+      <%= label_tag(:Description, "90 above (Best)" ) %>
+
+    </div>
+
+
+    <div class="actions">
+      <%= f.button "UPDATE", :type => "submit", :class => "btn btn-default" %>
+
+    </div>
+
+<% end %>
+
+
+<br>
+<br>
+
+<%= link_to 'NEW', new_furniture_spare_path, :class => "btn btn-warning" %>

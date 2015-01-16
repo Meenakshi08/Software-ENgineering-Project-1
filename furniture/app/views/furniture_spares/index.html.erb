@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<h1 style="color:PINK;margin-left:400px;"><strong>MEENAKSHI'S FURNITURE STORE</strong></h1>
+<b style="color: RED;margin-left:1000px"></b>
+<%= link_to 'VIEW DATABASE', view_database_path, :class => "btn btn-primary" %>
+
+<br>
+<b style="color: DarkSalmon;margin-left:1px">Listing all furniture names</b>
+<br>
+<p style="color: Black;margin-left:10px">Select one Spare Part from the following: </p>
+
+  <body>
+  <form name="form" action="" id="first">
+    <div id = 'input'>
+
+      <p id="notice"><%= notice %></p>
+      <table>
+        <tr>
+               <% if @furniture_spares.size==0 %>
+            <em> No objects right now </em>
+        <% end %>
+
+
+    <% @furniture_spares.each do |furniture_spare| %>
+      <tr>
+
+        <td><input type="radio" name="Select" value=<%=furniture_spare.id%> id="s" onclick="common()"> </td>
+         <td> <%= furniture_spare.SparePartName %> </td>
+       </tr>
+    <% end %>
+</table>
+</div>
+    <br>
+    <br>
+
+
+<div id = 'buttons'>
+  <button type="button"  class="btn btn-default" value="View" id="a" onClick="function1()" disabled=disabled">VIEW</button>
+  <button type="button"  class="btn btn-info" value="Edit" id="b" onClick="function2()" disabled=disabled">EDIT</button>
+  <button type="button"  class="btn btn-danger" value="Delete" id="c" onClick="function3()" disabled=disabled">DELETE</button>
+
+</div>
+<script>
+    function common()
+    {
+        document.getElementById("a").disabled= false;
+        document.getElementById("b").disabled= false;
+        document.getElementById("c").disabled= false;
+
+    }
+function function3()
+    {
+        var x= document.getElementsByName("Select");
+        var val;
+        for( var i=0; i< x.length; i++)
+        {
+            if(x[i].type == 'radio' && x[i].checked)
+            {
+                val= x[i].value;
+                break;
+            }
+
+        }
+        var result= confirm("Are you sure you want to delete the selected item?");
+        if (result==true) {
+        document.forms[0].action ="/furniture_spares/"+val+"/destroy/";
+            document.forms[0].submit();
+        }
+    }
+
+    function function2()
+    {
+        var etemp= document.getElementsByName("Select");
+        var e;
+        for( var i=0; i< etemp.length; i++)
+        {
+            if(etemp[i].type == "radio" && etemp[i].checked)
+            {
+                e= etemp[i].value;
+                break;
+            }
+
+        }
+        document.forms[0].action ="/furniture_spares/"+e+"/edit/";
+        document.forms[0].submit();
+    }
+
+
+    function function1()
+    {
+        var vtemp= document.getElementsByName("Select");
+        var val;
+
+        for( var i=0; i< vtemp.length; i++)
+        {
+            if(vtemp[i].type == "radio" && vtemp[i].checked)
+            {
+                val= vtemp[i].value;
+
+                break;
+            }
+
+        }
+        document.forms[0].action ="/furniture_spares/"+val;
+        document.forms[0].submit();
+    }
+</script>
+
+<br><br>
+
+  </form>
+ </body>
+
+<%= link_to 'NEW', new_furniture_spare_path, :class => "btn btn-warning" %>
+
+
+

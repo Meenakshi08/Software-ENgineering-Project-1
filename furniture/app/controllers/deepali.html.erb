@@ -1,0 +1,120 @@
+<h1 style="color:black;font-size:400%; text-align: center;><font face: "Arial">The Bouquet Shop</h1>
+<h1><p style="color:maroon;font-size:175%; text-align: center;">Bouquet Order</h1></p>
+
+
+
+<form>
+  <table border=1>
+    <thead>
+    <tr>
+      <th> </th>
+      <th>Product ID</th>
+      <th>Product Name</th>
+      <th>Number of Flowers</th>
+      <th>Type of Flowers</th>
+      <th>Type of Ferns</th>
+      <th>Price Range</th>
+      <th>Accessories</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @bouquet_shops.each do |bouquet_shop| %>
+        <tr>
+          <td><input type= "radio" name="Select" value=<%= bouquet_shop.id %> id="s" onclick="func()" >
+          <td><%= bouquet_shop.productid %></td>
+          <td><%= bouquet_shop.productname %></td>
+          <td><%= bouquet_shop.numberofflowers %></td>
+          <td><%= bouquet_shop.typeoffowers %></td>
+          <td><%= bouquet_shop.typeofferns %></td>
+          <td><%= bouquet_shop.pricerange %></td>
+          <td><%= bouquet_shop.accessories %>,<%= bouquet_shop.cellophane%>,<%= bouquet_shop.perfume%>,<%= bouquet_shop.card%></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+
+  <p>
+    <input type="button" name="View" value="View" id="a" onClick="func_view()" disabled>
+    <input type="button" name="Edit" value="Edit" id="b" onClick="func_edit()" disabled>
+    <input type="button" name="Delete" value="Delete" id="c" onClick="func_delete()" disabled>
+  </p>
+
+  <script>
+      function func()
+      {
+          document.getElementById("a").disabled= false;
+          document.getElementById("b").disabled= false;
+          document.getElementById("c").disabled= false;
+
+      }
+  </script>
+
+  <script>
+      function func_delete()
+      {
+          var x= document.getElementsByName("Select");
+          var val;
+          for( var i=0; i< x.length; i++)
+          {
+              if(x[i].type == "radio" && x[i].checked)
+              {
+                  val= x[i].value;
+                  break;
+              }
+
+          }
+          alert("Are you sure?");
+          document.forms[0].action ="/bouquet_shops/"+val+"/destroy/";
+          document.forms[0].submit();
+      }
+  </script>
+
+
+  <script>
+      function func_edit()
+      {
+
+          var etemp= document.getElementsByName("Select");
+          var e;
+          for( var i=0; i< etemp.length; i++)
+          {
+              if(etemp[i].type == "radio" && etemp[i].checked)
+              {
+                  e= etemp[i].value;
+                  break;
+              }
+
+          }
+          document.forms[0].action ="/bouquet_shops/"+e+"/edit/";
+          document.forms[0].submit();
+      }
+  </script>
+
+
+  <script>
+      function func_view()
+      {
+          var vtemp= document.getElementsByName("Select");
+          var v;
+
+          for( var i=0; i< vtemp.length; i++)
+          {
+              if(vtemp[i].type == "radio" && vtemp[i].checked)
+              {
+                  v= vtemp[i].value;
+
+                  break;
+              }
+
+          }
+
+          document.forms[0].action ="/bouquet_shops/"+v;
+          document.forms[0].submit();
+      }
+  </script>
+
+  <br>
+</form>
+<%= link_to 'New Bouquet', new_bouquet_shop_path %>
